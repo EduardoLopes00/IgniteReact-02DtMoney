@@ -1,10 +1,11 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useContext, useState } from 'react'
 import Modal from 'react-modal'
 import { Container, TransactionTypeContainer, RadioBox } from './styles'
 import  closeImg  from '../../assets/close.svg'
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
-import { api } from '../../services/api'
+import { TransactionsContext } from '../../TransactionsContext'
+import { TransactionInput } from '../../shared/interfaces/Transaction/TransactionInput'
 
 interface NewTransactionModalProps {
     isOpen: boolean,
@@ -17,17 +18,19 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModa
     const [category, setCategory] = useState<string>("")
     const [type, setType] = useState<string>("deposit")
 
+    const { createTransaction } = useContext(TransactionsContext);
+
     function handleCreateNewTransaction(event: FormEvent) {
         event.preventDefault(); //This will prevent the default behavior from HTML.
 
-        const data = {
+        const data: TransactionInput = {
             title,
             amount,
             category,
             type
         }
 
-        api.post('/transactions', data)
+        createTransaction(data);
     }
 
 
