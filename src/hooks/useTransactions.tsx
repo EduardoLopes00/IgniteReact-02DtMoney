@@ -1,8 +1,7 @@
-import { createContext, ReactNode, useEffect, useState } from "react";
-import { api } from "./services/api";
-import { Transaction } from "./shared/interfaces/Transaction/Transaction";
-import { TransactionInput } from "./shared/interfaces/Transaction/TransactionInput";
-
+import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { api } from "../services/api";
+import { Transaction } from "../shared/interfaces/Transaction/Transaction";
+import { TransactionInput } from "../shared/interfaces/Transaction/TransactionInput";
 
 interface TransactionProviderProps {
     children: ReactNode;
@@ -13,7 +12,7 @@ interface TransactionsContextData {
     createTransaction: (transaction: TransactionInput) => Promise<void>; 
 }
 
-export const TransactionsContext = createContext<TransactionsContextData>({} as TransactionsContextData);
+const TransactionsContext = createContext<TransactionsContextData>({} as TransactionsContextData);
 
 export function TransactionProvider({children}: TransactionProviderProps) {
     const [transactions, setTransactions] = useState<Transaction[]>([])
@@ -38,4 +37,8 @@ export function TransactionProvider({children}: TransactionProviderProps) {
             {children} {/* This is necessary to React understands that childrens will be expected to this component */} 
         </TransactionsContext.Provider >
     );
+}
+
+export function useTransaction() {
+    return useContext(TransactionsContext);
 }

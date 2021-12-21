@@ -1,13 +1,12 @@
-import { useContext } from 'react'
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
 import total from '../../assets/total.svg'
-import { TransactionsContext } from '../../TransactionsContext'
+import { useTransaction } from '../../hooks/useTransactions'
 
 import { Container } from "./styles"
 
 export function Summary() {
-    const { transactions } = useContext(TransactionsContext)
+    const { transactions } = useTransaction();
 
     const summary = transactions.reduce((acumulator, transaction) => { /* Reduce is used to transform an Array in an unique value with its elements accumulated on it */
         if (transaction.type === 'deposit') {
@@ -24,7 +23,6 @@ export function Summary() {
         withdraws: 0,
         total: 0
     })
-
 
     return (
         <Container>
@@ -47,15 +45,14 @@ export function Summary() {
                     <img src={outcomeImg} alt="Saidas" />
                 </header>
                 <strong> 
-                    - 
-                    
+                    -                    
                     {new Intl.NumberFormat('pt-BR', {
                         style: 'currency',
                         currency: 'BRL' })
                         .format(summary.withdraws)}
                 </strong>
             </div>
-            <div className='highlight-background'>
+            <div className= {summary.total > 0 ? 'highlight-background-positive' : 'highlight-background-negative'}>
                 <header>
                     <p>Total</p>
                     <img src={total} alt="" />

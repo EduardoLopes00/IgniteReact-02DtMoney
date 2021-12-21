@@ -6,13 +6,13 @@ export const GlobalStyle = createGlobalStyle`
         --red: #E52E4D;
         --green: #33CC95;
         --blue: #5429CC;
-
+        
         --blue-light: #6933FF;
-
+        
+        --text-light: #F0F2F5;
         --text-title: #363F5F;
         --text-body: #969CB3;
 
-        --background: #F0F2F5;
         --shape: #FFFFFF;
     }
 
@@ -39,12 +39,12 @@ export const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
     }
 
-    body, input, textarea, button{ /* Preciso especificar input, textarea e button pq o HTML n aplica se colocar no body */
+    body, input, textarea, button{ /* I need to specify the input, textarea and button cause HTML doesn't apply wheter put on body */
         font-family: 'Poppins', sans-serif;
         font-weight: 400;
     }
 
-    h1, h2, h3, h4, h5, h6, strong{ /* Fontes de destaque */
+    h1, h2, h3, h4, h5, h6, strong{ /* Highlight fonts */
         font-weight: 600;
     }
 
@@ -52,7 +52,7 @@ export const GlobalStyle = createGlobalStyle`
         cursor: pointer;
     }
 
-    [disabled] { /*Todos os componentes que estiverem desabilitados receberãoe essa propriedade*/
+    [disabled] { /*All the components that are disabled, will receive this propriety*/
         opacity: 0.6;
         cursor: not-allowed;
     }
