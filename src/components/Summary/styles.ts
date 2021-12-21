@@ -10,6 +10,7 @@ export const Container = styled.div`
         background: var(--shape);
         padding: 1.5rem 2rem;
         border-radius: 0.25rem;
+        color: var(--text-title);
 
         header {
             display: flex;
@@ -26,12 +27,12 @@ export const Container = styled.div`
 
         &.highlight-background-positive {
             background: var(--green);
-            color: var(--text-title);
         }
 
         &.highlight-background-negative {
             background: var(--red);
             color: var(--text-light)
         }
+        
     }
 `

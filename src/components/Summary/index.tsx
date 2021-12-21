@@ -52,7 +52,7 @@ export function Summary() {
                         .format(summary.withdraws)}
                 </strong>
             </div>
-            <div className= {summary.total > 0 ? 'highlight-background-positive' : 'highlight-background-negative'}>
+            <div className= {summary.total >= 0 ? 'highlight-background-positive' : 'highlight-background-negative'}>
                 <header>
                     <p>Total</p>
                     <img src={total} alt="" />

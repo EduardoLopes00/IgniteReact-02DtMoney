@@ -3,6 +3,8 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     :root {
         --background: #F0F2F5;
+        
+        --background-neutral: #969CB3;
         --red: #E52E4D;
         --green: #33CC95;
         --blue: #5429CC;
@@ -85,7 +87,7 @@ export const GlobalStyle = createGlobalStyle`
         right: 1.5rem;
         top: 1.5rem;
         border: 0;
-        background: transparent;
+        background: transparent; 
 
         transition: filter 0.2s;
 
