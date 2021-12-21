@@ -20,7 +20,7 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModa
 
     const { createTransaction } = useContext(TransactionsContext);
 
-    function handleCreateNewTransaction(event: FormEvent) {
+    async function handleCreateNewTransaction(event: FormEvent) {
         event.preventDefault(); //This will prevent the default behavior from HTML.
 
         const data: TransactionInput = {
@@ -30,7 +30,20 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionModa
             type
         }
 
-        createTransaction(data);
+        console.log(data);
+
+        await createTransaction(data);
+
+        cleanFields();
+
+        onRequestClose();
+    }
+
+    function cleanFields(): void {
+        setTitle('')
+        setAmount(0)
+        setCategory('deposit')
+        setType('')
     }
 
 
